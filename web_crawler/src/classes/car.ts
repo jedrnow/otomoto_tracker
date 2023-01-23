@@ -1,14 +1,14 @@
 export default class Car{
-    title: String;
-    url: String;
-    brand: String;
-    model: String;
-    year:String;
-    version: String;
-    price: String;
-    horsePower: String;
-    engine: String;
-    gearbox: String;
+    title: string;
+    url: string;
+    brand: string;
+    model: string;
+    year:string;
+    version: string;
+    price: string;
+    horsePower: string;
+    engine: string;
+    gearbox: string;
 
 
     constructor(){
