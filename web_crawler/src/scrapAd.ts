@@ -10,7 +10,7 @@ async function scrapAd({url}){
     const car = new Car();
 
     const title = $('.offer-header__row > h1').text().replace('Niski przebieg','').trim();
-    const price = $('.price-wrapper .offer-price__number').text().trim();
+    const price = $('.price-wrapper .offer-price__number').text().replace('PLN','').trim();
 
     car.title=title;
     car.price=price;
