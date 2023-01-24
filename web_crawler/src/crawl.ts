@@ -22,13 +22,14 @@ async function scrapPage({url}, cars: Array<Car>){
     const html = await response.text();
     const $ = cheerio.load(html);
 
-    const ads = $('article > div:nth-of-type(1) > h2 > a').toArray();
+    const ads = $('article').toArray();
 
     for(const ad of ads){
-        const href = $(ad).attr('href');
+        const href = $(ad).find('div:nth-of-type(1) > h2 > a').attr('href');
+        const img = $(ad).find('img').attr('src');
         if(href?.includes('audi')){
             console.log('Fetching information about car no. %d', cars.length+1)
-            const car = await scrapAd({url: href});
+            const car = await scrapAd({url: href}, img ?? '');
             if(car.title.length>0){
                 cars.push(car);
                 console.log('Successfully received information about car no. %d', cars.length)

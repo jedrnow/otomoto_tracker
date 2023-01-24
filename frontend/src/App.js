@@ -1,54 +1,25 @@
-import "./App.css";
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./Navigation";
+import AudiA4 from "./AudiA4";
+import AudiA5 from "./AudiA5";
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      items: [],
-      DataisLoaded: false,
-    };
-  }
-
-  componentDidMount() {
-    fetch("http://localhost:9000/audi-a4")
-      .then((res) => res.json())
-      .then((json) => {
-        this.setState({
-          items: json,
-          DataisLoaded: true,
-        });
-      });
-  }
-
   render() {
-    const { DataisLoaded, items } = this.state;
-    if (!DataisLoaded)
-      return (
-        <div>
-          <h1> Loading data.... </h1>{" "}
-        </div>
-      );
-
     return (
-      <div className="App">
-        <h1> Audi A4 </h1>{" "}
-        {items.map((item) => (
-          <ul>
-            <li>{item.title}</li>
-            <li>{item.url}</li>
-            <li>{item.brand}</li>
-            <li>{item.model}</li>
-            <li>{item.year}</li>
-            <li>{item.version}</li>
-            <li>{item.price}</li>
-            <li>{item.horsePower}</li>
-            <li>{item.engine}</li>
-            <li>{item.gearbox}</li>
-          </ul>
-        ))}
-      </div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" Component={<Navigation />}>
+            <Route index element={<Navigation />} />
+          </Route>
+          <Route path="audi/a4" Component={<AudiA4 />}>
+            <Route index element={<AudiA4 />} />
+          </Route>
+          <Route path="audi/a5" Component={<AudiA5 />}>
+            <Route index element={<AudiA5 />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     );
   }
 }

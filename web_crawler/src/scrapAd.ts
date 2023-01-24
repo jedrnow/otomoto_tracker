@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
 import Car from './classes/car';
 
-async function scrapAd({url}){
+async function scrapAd({url}, img:string){
     const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
@@ -15,6 +15,7 @@ async function scrapAd({url}){
     car.title=title;
     car.price=price;
     car.url=url;
+    car.image=img;
 
     const items = $('.offer-params__list > .offer-params__item').toArray();
     for(const item of items){

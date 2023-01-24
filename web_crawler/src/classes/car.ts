@@ -9,6 +9,7 @@ export default class Car{
     horsePower: string;
     engine: string;
     gearbox: string;
+    image:string;
 
 
     constructor(){
@@ -21,5 +22,6 @@ export default class Car{
         this.horsePower = '';
         this.engine = '';
         this.gearbox = '';
+        this.image = '';
     }
 };
