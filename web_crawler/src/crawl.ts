@@ -6,6 +6,8 @@ import Car from './classes/car';
 import exportToSpreadsheet from './spreadsheet';
 import AD_URLS from './constants/urls';
 
+const Stopwatch = require('statman-stopwatch');
+
 async function fetchPageNumber({url}){
     const response = await fetch(url);
     const html = await response.text();
@@ -17,7 +19,7 @@ async function fetchPageNumber({url}){
     return parseInt(lastPage);
 }
 
-async function scrapPage({url}, cars: Array<Car>){
+async function scrapPage(title:string,{url}, cars: Array<Car>){
     const response = await fetch(url);
     const html = await response.text();
     const $ = cheerio.load(html);
@@ -25,9 +27,11 @@ async function scrapPage({url}, cars: Array<Car>){
     const ads = $('article').toArray();
 
     for(const ad of ads){
-        const href = $(ad).find('div:nth-of-type(1) > h2 > a').attr('href');
+        const href = $(ad).find('div:nth-of-type(1) > h2 > a').attr('href') ?? '';
         const img = $(ad).find('img').attr('src');
-        if(href?.includes('audi')){
+
+        const reg = new RegExp(title.split('_')[0], 'i');
+        if(reg.test(href)){
             console.log('Fetching information about car no. %d', cars.length+1)
             const car = await scrapAd({url: href}, img ?? '');
             if(car.title.length>0){
@@ -42,6 +46,8 @@ async function scrapPage({url}, cars: Array<Car>){
 
 async function crawl(title:string,url:String){
     console.log(`=== ${title} scraper started! ===`);
+    const stopwatch = new Stopwatch();
+    stopwatch.start();
 
     const cars: Array<Car> = [];
 
@@ -50,10 +56,12 @@ async function crawl(title:string,url:String){
     for(let i=1;i<lastPage+1;i++){
         const gotoPageURL = url.replace('page=1', `page=${i}`);
         console.log(`=== Scraping page no. ${i} ===`);
-        await scrapPage({url:gotoPageURL},cars);
+        await scrapPage(title,{url:gotoPageURL},cars);
     }
 
+    stopwatch.stop();
     console.log(`=== Finished scraping ${title} ===`);
+    console.log(`=== Execution time: ${stopwatch.read(2) / 1000} [s] ===`);
     console.log('=== Total scraped ads: %d ===', cars.length);
     exportToSpreadsheet(title,cars);
 };

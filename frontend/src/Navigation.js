@@ -15,6 +15,9 @@ class Navigation extends React.Component {
         <Link to="/audi/a5" className="navigation-select">
           AudiA5
         </Link>
+        <Link to="/bmw/seria-3" className="navigation-select">
+          BMW Seria 3
+        </Link>
       </nav>
     );
   }

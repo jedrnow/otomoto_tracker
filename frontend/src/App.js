@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./Navigation";
 import AudiA4 from "./AudiA4";
 import AudiA5 from "./AudiA5";
+import BMW3 from "./BMW3";
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,9 @@ class App extends React.Component {
           </Route>
           <Route path="audi/a5" Component={<AudiA5 />}>
             <Route index element={<AudiA5 />} />
+          </Route>
+          <Route path="bmw/seria-3" Component={<BMW3 />}>
+            <Route index element={<BMW3 />} />
           </Route>
         </Routes>
       </BrowserRouter>

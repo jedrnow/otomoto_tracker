@@ -4,6 +4,8 @@ body{
 #root > div{
   display:inline-block;
   justify-content: center;
+  width: 100%;
+  width: 100%;
 }
 .navigation-bar{
     margin:33px;

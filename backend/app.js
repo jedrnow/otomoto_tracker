@@ -7,6 +7,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var audi_a5Router = require("./routes/audi-a5");
 var audi_a4Router = require("./routes/audi-a4");
+var bmw_3Router = require("./routes/bmw-3");
 
 var app = express();
 
@@ -31,6 +32,7 @@ app.use(function (req, res, next) {
 app.use("/", indexRouter);
 app.use("/audi-a5", audi_a5Router);
 app.use("/audi-a4", audi_a4Router);
+app.use("/bmw-3", bmw_3Router);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
