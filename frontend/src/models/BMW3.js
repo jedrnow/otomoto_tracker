@@ -1,4 +1,4 @@
-import CarComponent from "./CarComponent";
+import CarComponent from "../components/CarComponent";
 
 const BMW3 = () => {
   return <CarComponent modelName="bmw-3" modelNameFixed="BMW Seria 3" />;

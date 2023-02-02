@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#model-name{
+    @apply text-center;
+    @apply text-3xl;
+    @apply bg-white;
+    @apply border-2;
+}
+
+#loading-data{
+    @apply text-center;
+    @apply text-3xl;
+    @apply bg-white;
+    @apply border-2;
+}
+
+#container{
+    @apply container;
+    @apply p-6;
+    @apply grid;
+    @apply grid-cols-4;
+    @apply gap-4;
+    @apply bg-slate-300;
+    @apply object-center;
+    @apply ml-44;
+}
+
+img[alt="card-image"]{
+    @apply h-48;
+}
+
+ul{
+    @apply max-h-full;
+}
+
+li{
+    @apply text-left;
+    @apply text-xl;
+}
+
+.title{
+    @apply text-left;
+    @apply text-2xl;
+}
+
+.url{
+    @apply text-center;
+}

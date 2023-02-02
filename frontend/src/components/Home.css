@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+}
+
+#root{
+    @apply w-screen;
+    @apply items-center;
+    @apply justify-center;
+}
+
+h1{
+    @apply text-center;
+    @apply text-3xl;
+    @apply bg-white;
+    @apply border-2;
+}
+
+#container-home{
+    @apply text-center;
+    @apply container;
+    @apply mx-auto;
+    @apply p-6;
+    @apply grid;
+    @apply grid-cols-4;
+    @apply gap-4;
+    @apply bg-slate-300;
+    @apply h-screen;
+}

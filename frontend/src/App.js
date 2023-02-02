@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navigation from "./Navigation";
-import AudiA4 from "./AudiA4";
-import AudiA5 from "./AudiA5";
-import BMW3 from "./BMW3";
+import AudiA4 from "./models/AudiA4";
+import AudiA5 from "./models/AudiA5";
+import BMW3 from "./models/BMW3";
+import Home from "./components/Home";
 
 class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/" Component={<Navigation />}>
-            <Route index element={<Navigation />} />
+          <Route path="/" Component={<Home />}>
+            <Route index element={<Home />} />
           </Route>
           <Route path="audi/a4" Component={<AudiA4 />}>
             <Route index element={<AudiA4 />} />

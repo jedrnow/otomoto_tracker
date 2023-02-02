@@ -1,4 +1,4 @@
-import CarComponent from "./CarComponent";
+import CarComponent from "../components/CarComponent";
 
 const AudiA4 = () => {
   return <CarComponent modelName="audi-a4" modelNameFixed="Audi A4" />;

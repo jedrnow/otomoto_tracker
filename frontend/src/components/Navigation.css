@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    @apply bg-slate-400;
+}
+
+nav{
+    @apply bg-white;
+    @apply sticky;
+    @apply top-0;
+    @apply w-full;
+}
+
